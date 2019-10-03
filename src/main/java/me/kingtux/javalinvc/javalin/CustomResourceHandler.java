@@ -101,8 +101,7 @@ public class CustomResourceHandler implements ResourceHandler {
             String content = IOUtils.toString(stream, StandardCharsets.UTF_8.name());
             //response.setContentLength(content.length());
             response.setCharacterEncoding("UTF-8");
-            response.getOutputStream().print(content);
-            response.getOutputStream().flush();
+            response.getWriter().print(content);
         } catch (IOException e) {
             JavalinVC.LOGGER.error("Unable to copy stream", e);
             return false;
