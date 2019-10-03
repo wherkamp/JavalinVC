@@ -17,7 +17,7 @@ public final class SiteMapAuto extends Thread {
     private File folder = new File("sitemap");
     private JavalinVC website;
 
-    SiteMapAuto(JavalinVC simpleWebsite) {
+    public SiteMapAuto(JavalinVC simpleWebsite) {
         this.website = simpleWebsite;
     }
 

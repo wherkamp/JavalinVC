@@ -10,10 +10,10 @@ public class ViewUtils {
     }
 
     public static void respond(Context request, View view, JavalinVC javalinVC) {
-        request.result(javalinVC.getViewManager().parseView(view));
+        request.html(javalinVC.getViewManager().parseView(view));
     }
 
     public static void respond(Context request, View view, JavalinVC javalinVC, ResourceGrabber internalResourceGrabber) {
-        request.result(javalinVC.getViewManager().parseView(internalResourceGrabber, view));
+        request.html(javalinVC.getViewManager().parseView(internalResourceGrabber, view));
     }
 }

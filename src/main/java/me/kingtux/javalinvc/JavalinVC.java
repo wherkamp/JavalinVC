@@ -15,6 +15,7 @@ import me.kingtux.javalinvc.errorhandler.ErrorControllerHandler;
 import me.kingtux.javalinvc.errorhandler.annotations.EHController;
 import me.kingtux.javalinvc.javalin.CustomResourceHandler;
 import me.kingtux.javalinvc.rg.ResourceGrabber;
+import me.kingtux.javalinvc.sitemap.SiteMapAuto;
 import me.kingtux.javalinvc.view.ViewManager;
 import me.kingtux.javalinvc.view.ViewManagerBuilder;
 import me.kingtux.simpleannotation.MethodFinder;
@@ -48,6 +49,7 @@ public class JavalinVC {
         this.javalin.config.inner.resourceHandler = new CustomResourceHandler(this);
         this.javalin.start();
         running = true;
+        new SiteMapAuto(this).start();
     }
 
 
