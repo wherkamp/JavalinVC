@@ -8,6 +8,7 @@ import me.kingtux.javalinvc.core.ArgumentBuilder;
 import me.kingtux.javalinvc.errorhandler.annotations.EHController;
 import me.kingtux.javalinvc.view.View;
 import me.kingtux.javalinvc.view.ViewManager;
+import me.kingtux.javalinvc.view.ViewUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -43,8 +44,8 @@ public class ErrorController {
             } catch (Exception e) {
                 throw new ControllerExeception(this, e);
             }
-            //if (!request.res.isCommitted() || !view.getTemplate().equals(""))
-                //request.respond(view, vb);
+            if (!request.res.isCommitted() || !view.getTemplate().equals(""))
+                ViewUtils.respond(request, view, website);
         };
     }
 

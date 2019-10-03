@@ -38,9 +38,20 @@ public class CustomResourceHandler implements ResourceHandler {
     }
 
     @Override
-    public boolean handle(HttpServletRequest request, HttpServletResponse response) {
+    public boolean handle(HttpServletRequest request, @NotNull HttpServletResponse response) {
         String url = request.getRequestURI();
-        String result = url.substring(url.lastIndexOf('.') + 1).trim();
+        //Get Extension
+        String extension = url.substring(url.lastIndexOf('.') + 1).trim();
+        //Get URL For File
+        URL urlForFile = getURLForFile(url);
+        //Check the url
+        if (urlForFile == null) return false;
+
+        //Respond
+        return respond(urlForFile, request, response, extension);
+    }
+
+    private URL getURLForFile(String url) {
         URL urlForFile = null;
         //Check for site map
         if (url.toLowerCase().contains("sitemap")) {
@@ -48,48 +59,24 @@ public class CustomResourceHandler implements ResourceHandler {
             Optional<Resource> resource = siteMapGrabber.getResource(url.substring(1));
             if (resource.isPresent()) urlForFile = resource.get().getUrl();
         }
-        //Check for Web JAr
+        //Web Jar
         if (url.toLowerCase().startsWith("/assets/libs/") && urlForFile == null) {
-            String libPath = url.replace("/assets/libs/", "");
-            StringBuilder path = new StringBuilder();
-            if (JavalinVC.class.getResource("/META-INF/resources/webjars/" + libPath) != null) {
-                path = new StringBuilder("/META-INF/resources/webjars/" + libPath);
-            } else {
-                //Get the Version using random apis!
-                String[] split = libPath.split("/");
-                String localPath;
-                WebJarAssetLocator locator = new WebJarAssetLocator();
-                StringBuilder builder = new StringBuilder();
-                for (int i = 1; i < split.length; i++) {
-                    if (i != 1) builder.append("/");
-                    builder.append(split[i]);
-                }
-                try {
-                    localPath = locator.getFullPath(split[0], builder.toString());
-                    path = new StringBuilder(String.format("/%s", localPath));
-                } catch (IllegalArgumentException ignored) {
-                }
-            }
-
-            if ((!path.toString().isEmpty()) && JavalinVC.class.getResource(path.toString()) != null) {
-                JavalinVC.LOGGER.debug("Locating Internal Library File " + path.toString());
-
-                urlForFile = JavalinVC.class.getResource(path.toString());
-            }
-
+            urlForFile = webjar(url);
         }
         //Check for regular Static FIle
         if (urlForFile == null) {
             Optional<Resource> resource = grabber.getResource(url.substring(1));
             if (!resource.isPresent()) {
                 JavalinVC.LOGGER.info("Unable to locate: " + url.substring(1));
-                return false;
+                return null;
             }
             urlForFile = resource.get().getUrl();
             //.getFile(url.substring(1));
         }
-        //It wasnt found
-        if (urlForFile == null) return false;
+        return urlForFile;
+    }
+
+    private boolean respond(URL urlForFile, HttpServletRequest request, HttpServletResponse response, String result) {
 
         //Do the response
         response.setContentType(MimeType.getMimeTypeFromExtension(result).getMimeType());
@@ -108,6 +95,36 @@ public class CustomResourceHandler implements ResourceHandler {
         }
 
         return true;
+    }
+
+    private URL webjar(String url) {
+        String libPath = url.replace("/assets/libs/", "");
+        StringBuilder path = new StringBuilder();
+        if (JavalinVC.class.getResource("/META-INF/resources/webjars/" + libPath) != null) {
+            path = new StringBuilder("/META-INF/resources/webjars/" + libPath);
+        } else {
+            //Get the Version using random apis!
+            String[] split = libPath.split("/");
+            String localPath;
+            WebJarAssetLocator locator = new WebJarAssetLocator();
+            StringBuilder builder = new StringBuilder();
+            for (int i = 1; i < split.length; i++) {
+                if (i != 1) builder.append("/");
+                builder.append(split[i]);
+            }
+            try {
+                localPath = locator.getFullPath(split[0], builder.toString());
+                path = new StringBuilder(String.format("/%s", localPath));
+            } catch (IllegalArgumentException ignored) {
+            }
+        }
+
+        if ((!path.toString().isEmpty()) && JavalinVC.class.getResource(path.toString()) != null) {
+            JavalinVC.LOGGER.debug("Locating Internal Library File " + path.toString());
+
+            return JavalinVC.class.getResource(path.toString());
+        }
+        return null;
     }
 
 }
