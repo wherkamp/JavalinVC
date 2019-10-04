@@ -20,10 +20,9 @@ public class ErrorMessage extends SimpleJtwigFunction {
     @Override
     public Object execute(FunctionRequest functionRequest) {
         if (functionRequest.get(0) instanceof Undefined) return null;
-        return functionRequest.get(0);
-        //if (site.getErrorMessageProvider() == null) {
-        //    return functionRequest.get(0);
-        //}
-        //return site.getErrorMessageProvider().getErrorMessage((String) functionRequest.get(0));
+        if (site.getErrorMessageProvider() == null) {
+            return functionRequest.get(0);
+        }
+        return site.getErrorMessageProvider().getErrorMessage((String) functionRequest.get(0));
     }
 }

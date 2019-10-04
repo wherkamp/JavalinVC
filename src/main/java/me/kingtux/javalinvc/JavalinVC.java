@@ -39,6 +39,7 @@ public class JavalinVC {
     private boolean running;
     private ResourceGrabber internalResourceGrabber;
     private ResourceGrabber resourceGrabber;
+    private ErrorMessageProvider errorMessageProvider;
 
     public JavalinVC(Javalin javalin, WebsiteRules rules, ViewManagerBuilder viewManager, ResourceGrabber resourceGrabber) {
         this.javalin = javalin;
@@ -78,6 +79,14 @@ public class JavalinVC {
             javalin.error(errorController.status(), new ErrorControllerHandler(errorController, this)::execute);
         }
         return this;
+    }
+
+    public ErrorMessageProvider getErrorMessageProvider() {
+        return errorMessageProvider;
+    }
+
+    public void setErrorMessageProvider(ErrorMessageProvider errorMessageProvider) {
+        this.errorMessageProvider = errorMessageProvider;
     }
 
     private HandlerType getHandlerType(RequestType requestType) {
