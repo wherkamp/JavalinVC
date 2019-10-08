@@ -106,6 +106,9 @@ public class JavalinVC {
         return rules;
     }
 
+    public void setRules(WebsiteRules r) {
+        rules = r;
+    }
 
     public Javalin stop() {
         running = false;
