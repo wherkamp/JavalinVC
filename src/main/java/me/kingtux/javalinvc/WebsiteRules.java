@@ -25,7 +25,7 @@ public class WebsiteRules {
      * @return the host
      */
     public String getHost() {
-        return url.replace("https://", "").replace("http://", "");
+        return url.replaceAll("(https://|http://)", "");
     }
 
     public String baseURL() {

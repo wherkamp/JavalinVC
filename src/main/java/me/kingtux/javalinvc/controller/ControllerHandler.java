@@ -21,12 +21,15 @@ public class ControllerHandler {
     }
 
     public void execute(Context ctx) {
+        //Grab baseURL by from Context
         if (website.getRules().baseURL().equalsIgnoreCase("{PFFC}")) {
             website.setRules(WebsiteRulesBuilder.create().setUrl(ctx.url().substring(0, ctx.url().length() - 1)).setName(website.getRules().name()).build());
             website.getViewManager().registerDefaultViewVariable("sr", website.getRules());
             JavalinVC.LOGGER.debug("Changing WebsiteRules " + website.getRules().toString());
         }
+        //Build the controller executor
         ControllerExecutor se = sc.buildExecutor(ctx, website.getViewManager(), website);
+        // Execute it
         try {
             se.execute();
         } catch (ControllerExeception e) {
