@@ -1,1 +1,12 @@
 remote_theme: pmarsceill/just-the-docs
+
+title: JavalinVC
+description: A View COntroller system for Javalin
+baseurl: "/javalinvc"
+url: "https://kingtux.dev"
+
+aux_links:
+  "Javalin on GitHub":
+    - "//github.com/wherkamp/javalinvc"
+  "SimpleSite":
+    - "https://kingtux.dev/simpleSite"
