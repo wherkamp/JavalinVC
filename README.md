@@ -79,6 +79,17 @@ class Main {
 }
 ``` 
 
+#### Accessing 
+[How to access my Maven Repo](https://kingtux.dev/my-maven/)
+
+Maven Artifact
+```xml
+<dependency>
+    <groupId>me.kingtux</groupId>
+    <artifactId>javalinvc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
 # Creating a Controller
 First off you will need to create a new class. 
 and you will need to create and object and register it. 
