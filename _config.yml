@@ -4,7 +4,7 @@ title: JavalinVC
 description: A View COntroller system for Javalin
 baseurl: "/JavalinVC"
 url: "https://kingtux.dev"
-
+color_scheme: "dark"
 aux_links:
   "Javalin on GitHub":
     - "//github.com/wherkamp/javalinvc"
