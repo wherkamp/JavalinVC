@@ -13,10 +13,16 @@ public @interface RequestParam {
 
     /**
      * Cookies, FILE, Session does not support this
+     *
      * @return the default value
      */
     String defaultValue() default "";
 
+    /**
+     * The RequestParam Type
+     *
+     * @return the type
+     */
     Type type() default Type.REQUEST;
 
     /**
