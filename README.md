@@ -27,11 +27,11 @@ JavalinVC is a View Controller Framework built upon Tipsy's [Javalin](https://gi
 # Starting Off
 You will need to create a Javalin Object. You can read how to do that [here](https://javalin.io/documentation#getting-started). 
 
-Then you will need to create a ResourceGrabber Again learn [here](https://github.com/wherkamp/JavalinVC/wiki/Resource-Grabbers). 
+Then you will need to create a ResourceGrabber Again learn [here](https://kingtux.dev/JavalinVC/resourcegrabbers.html). 
 
 The website rules is simple. `WebsiteRulesBuilder.create().setName("Test - JavalinVC").setUrl("http://127.0.0.1:1234").build();`
 
-And then last but not least. The View Manager read how to create that here [here](https://github.com/wherkamp/JavalinVC/wiki/ViewManager)
+And then last but not least. The View Manager read how to create that here [here](https://kingtux.dev/JavalinVC/viewmanagers.html)
 
 And once you have all of those you can create your JavalinVC.
 
