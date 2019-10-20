@@ -2,7 +2,7 @@ remote_theme: pmarsceill/just-the-docs
 
 title: JavalinVC
 description: A View COntroller system for Javalin
-baseurl: "/javalinvc"
+baseurl: "/JavalinVC"
 url: "https://kingtux.dev"
 
 aux_links:
