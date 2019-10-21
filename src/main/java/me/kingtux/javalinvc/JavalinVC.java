@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import io.javalin.core.security.Role;
 import io.javalin.http.Handler;
 import io.javalin.http.HandlerType;
+import io.javalin.websocket.WsHandler;
 import me.kingtux.javalinvc.annotations.Controller;
 import me.kingtux.javalinvc.annotations.SitemapHandler;
 import me.kingtux.javalinvc.controller.ControllerHandler;
@@ -27,6 +28,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class JavalinVC {
     private Javalin javalin;
@@ -79,6 +81,10 @@ public class JavalinVC {
             javalin.error(errorController.status(), new ErrorControllerHandler(errorController, this)::execute);
         }
         return this;
+    }
+
+    public Javalin ws(@NotNull String path, @NotNull Consumer<WsHandler> ws) {
+        return javalin.ws(path, ws);
     }
 
     public ErrorMessageProvider getErrorMessageProvider() {
