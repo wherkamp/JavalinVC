@@ -4,28 +4,24 @@
 JavalinVC is a View Controller Framework built upon Tipsy's [Javalin](https://github.com/tipsy/javalin/)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Starting Off
-You will need to create a Javalin Object. You can read how to do that [here](https://javalin.io/documentation#getting-started). 
+
+#### Accessing 
+[How to access my Maven Repo](https://kingtux.dev/my-maven/)
+
+Maven Artifact
+```xml
+<dependency>
+    <groupId>me.kingtux</groupId>
+    <artifactId>javalinvc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+#### Creating The JavalinVC
+ 
+You will need to create a Javalin Object. You can read how to do that
+[here](https://javalin.io/documentation#getting-started).
 
 Then you will need to create a ResourceGrabber Again learn [here](https://kingtux.dev/JavalinVC/resourcegrabbers.html). 
 
@@ -79,17 +75,6 @@ class Main {
 }
 ``` 
 
-#### Accessing 
-[How to access my Maven Repo](https://kingtux.dev/my-maven/)
-
-Maven Artifact
-```xml
-<dependency>
-    <groupId>me.kingtux</groupId>
-    <artifactId>javalinvc</artifactId>
-    <version>1.0-SNAPSHOT</version>
-</dependency>
-```
 # Creating a Controller
 First off you will need to create a new class. 
 and you will need to create and object and register it. 
