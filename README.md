@@ -4,7 +4,7 @@
 JavalinVC is a View Controller Framework built upon Tipsy's [Javalin](https://github.com/tipsy/javalin/)
 
 
-# Starting Off
+## Starting Off
 
 #### Accessing 
 [How to access my Maven Repo](https://kingtux.dev/my-maven/)
@@ -75,7 +75,7 @@ class Main {
 }
 ``` 
 
-# Creating a Controller
+## Creating a Controller
 First off you will need to create a new class. 
 and you will need to create and object and register it. 
 

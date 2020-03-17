@@ -41,6 +41,7 @@ public final class SiteMapAuto extends Thread {
             for (SingleSitemapHandler singleSitemapHandler : singleSitemapHandlers) {
 
                 List<SiteURL> urls = singleSitemapHandler.execute(website);
+
                 urls.forEach(generator::addURL);
             }
 

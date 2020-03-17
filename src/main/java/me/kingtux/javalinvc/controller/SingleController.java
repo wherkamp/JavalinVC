@@ -51,7 +51,7 @@ public class SingleController {
             } catch (Exception e) {
                 throw new ControllerExeception(this, e);
             }
-
+            if (view.getTemplate().isEmpty()) return;
             if (!request.res.isCommitted() || !view.getTemplate().equals(""))
                 ViewUtils.respond(request, view, website);
         };
