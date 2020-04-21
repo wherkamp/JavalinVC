@@ -2,7 +2,7 @@ package me.kingtux.javalinvc.jtwig;
 
 import me.kingtux.javalinvc.JavalinVC;
 import me.kingtux.javalinvc.rg.Resource;
-import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.io.IOUtils;
 import org.jtwig.resource.reference.ResourceReference;
 import org.jtwig.resource.reference.ResourceReferenceExtractor;
 
