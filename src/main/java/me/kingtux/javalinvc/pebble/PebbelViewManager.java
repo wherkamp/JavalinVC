@@ -1,9 +1,11 @@
 package me.kingtux.javalinvc.pebble;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
+import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import io.javalin.http.Context;
 import me.kingtux.javalinvc.JavalinVC;
 import me.kingtux.javalinvc.jtwig.ErrorMessage;
+import me.kingtux.javalinvc.jtwig.JtwigView;
 import me.kingtux.javalinvc.rg.ResourceGrabber;
 import me.kingtux.javalinvc.view.View;
 import me.kingtux.javalinvc.view.ViewManager;
@@ -11,6 +13,9 @@ import me.kingtux.javalinvc.view.ViewVariableGrabber;
 import org.jtwig.environment.EnvironmentConfiguration;
 import org.jtwig.environment.EnvironmentConfigurationBuilder;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,12 +49,24 @@ public class PebbelViewManager implements ViewManager {
 
     @Override
     public String parseView(ResourceGrabber grabber, View view) {
-        return null;
+        PebbleView pebbleView = (PebbleView) view;
+        PebbleTemplate compiledTemplate = pebbleEngine.getTemplate(view.getTemplate());
+        Writer writer = new StringWriter();
+        try {
+            compiledTemplate.evaluate(writer, pebbleView.getValues());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return writer.toString();
     }
 
     @Override
-    public View buildView(JavalinVC website, Context rq) {
-        return null;
+    public View buildView(JavalinVC website, Context request) {
+        View view = new PebbleView();
+        defaultVariables.forEach(view::set);
+        if (request != null)
+            viewVariableGrabbers.forEach((s, viewVariableGrabber) -> view.set(s, viewVariableGrabber.get(request)));
+        return view;
     }
 
     @Override
