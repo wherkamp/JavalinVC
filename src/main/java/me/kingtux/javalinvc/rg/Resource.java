@@ -1,5 +1,9 @@
 package me.kingtux.javalinvc.rg;
 
+import com.google.common.io.CharSource;
+
+import java.io.Reader;
+import java.io.StringReader;
 import java.net.URL;
 import java.util.Optional;
 
@@ -32,5 +36,9 @@ public class Resource {
 
     public ResourceGrabber getResourceGrabber() {
         return resourceGrabber;
+    }
+
+    public Reader getReader() {
+        return new StringReader(new String(value));
     }
 }
