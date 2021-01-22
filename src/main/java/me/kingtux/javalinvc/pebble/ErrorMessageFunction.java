@@ -3,7 +3,6 @@ package me.kingtux.javalinvc.pebble;
 import com.mitchellbosecke.pebble.extension.Function;
 import com.mitchellbosecke.pebble.template.EvaluationContext;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
-import jdk.nashorn.internal.runtime.Undefined;
 import me.kingtux.javalinvc.JavalinVC;
 
 import java.util.Collections;

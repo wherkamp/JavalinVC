@@ -1,4 +1,4 @@
-# JavalinVC
+# JavalinVC [![Maven Version](https://mvnhelper.potatocorp.dev/kingtux-repo/me.kingtux/javalinvc/badge.png)](https://mvnhelper.potatocorp.dev/kingtux-repo/me.kingtux/javalinvc)
 
 ### What is it?
 JavalinVC is a View Controller Framework built upon Tipsy's [Javalin](https://github.com/tipsy/javalin/)

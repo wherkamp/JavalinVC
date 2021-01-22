@@ -2,7 +2,6 @@ package me.kingtux.javalinvc.pebble;
 
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import me.kingtux.javalinvc.view.View;
-import org.jtwig.JtwigModel;
 
 import java.util.HashMap;
 import java.util.Map;

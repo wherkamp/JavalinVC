@@ -1,7 +1,6 @@
 package me.kingtux.javalinvc.view;
 
 import me.kingtux.javalinvc.JavalinVC;
-import me.kingtux.javalinvc.jtwig.JtwigViewManager;
 
 import java.lang.reflect.InvocationTargetException;
 
