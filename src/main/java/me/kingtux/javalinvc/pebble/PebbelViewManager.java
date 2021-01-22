@@ -4,14 +4,12 @@ import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import io.javalin.http.Context;
 import me.kingtux.javalinvc.JavalinVC;
-import me.kingtux.javalinvc.jtwig.ErrorMessage;
-import me.kingtux.javalinvc.jtwig.JtwigView;
+
 import me.kingtux.javalinvc.rg.ResourceGrabber;
 import me.kingtux.javalinvc.view.View;
 import me.kingtux.javalinvc.view.ViewManager;
 import me.kingtux.javalinvc.view.ViewVariableGrabber;
-import org.jtwig.environment.EnvironmentConfiguration;
-import org.jtwig.environment.EnvironmentConfigurationBuilder;
+
 
 import java.io.IOException;
 import java.io.StringWriter;
